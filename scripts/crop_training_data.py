@@ -48,9 +48,19 @@ for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
     max_TL_y = center_y + (region_size - cell_image_size) // 2 - region_size
 
     for _ in range(num_regions_per_cell):
-        # uniformly sample a top left corner
-        region_TL_x = random.randint(min_TL_x, max_TL_x)
-        region_TL_y = random.randint(min_TL_y, max_TL_y)
+
+        try:
+            # uniformly sample a top left corner
+            region_TL_x = random.randint(min_TL_x, max_TL_x)
+            region_TL_y = random.randint(min_TL_y, max_TL_y)
+
+        except Exception as e:
+            print("min_TL_x", min_TL_x)
+            print("max_TL_x", max_TL_x)
+            print("min_TL_y", min_TL_y)
+            print("max_TL_y", max_TL_y)
+
+            raise e
 
         region_BR_x = region_TL_x + region_size
         region_BR_y = region_TL_y + region_size
