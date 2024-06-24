@@ -41,11 +41,10 @@ for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
     cell_image_size = row["cell_image_size"]
 
     # calculate the range for the top left corner of the region
-    min_TL_x = center_x - (region_size - cell_image_size) // 2
-    max_TL_x = center_x + (region_size - cell_image_size) // 2 - region_size
-
-    min_TL_y = center_y - (region_size - cell_image_size) // 2
-    max_TL_y = center_y + (region_size - cell_image_size) // 2 - region_size
+    min_TL_x = center_x - (region_size - cell_image_size // 2)
+    max_TL_x = center_x - cell_image_size // 2
+    min_TL_y = center_y - (region_size - cell_image_size // 2)
+    max_TL_y = center_y - cell_image_size // 2
 
     for _ in range(num_regions_per_cell):
 
