@@ -43,7 +43,7 @@ def grab_scan_data_from_LL_results(slides_dir, results_dir, cellname="B1"):
         # iterate over the rows in the cells_info dataframe
         for i, row in cells_info.iterrows():
             # get the slide path
-            slide_path = os.path.join(slides_dir, result_folder, "slide.tif")
+            slide_path = os.path.join(slides_dir, result_folder + ".ndpi")
 
             # get the center_x, center_y, cellname, and cell_image_size
             center_x = row["center_x"]
