@@ -90,6 +90,10 @@ for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
 
         slide.close()
 
+        # if the image is RGBA, convert it to RGB
+        if region.mode == "RGBA":
+            region = region.convert("RGB")
+
         # save the region as a jpg file in the save_dir with the name as the current_index.jpg
         region.save(os.path.join(save_dir, f"{current_index}.jpg"))
 
