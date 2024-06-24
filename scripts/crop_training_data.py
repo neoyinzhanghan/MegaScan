@@ -8,7 +8,10 @@ cell_data_path = (
     "/media/hdd3/neo/results_bma_normal_lite_v3/B1_cell_scan_training_data.csv"
 )
 
-save_dir = ""
+save_dir = "/media/hdd3/neo/B1_cell_scan_training_data"
+
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir)
 
 num_regions_per_cell = 1
 region_size = 512
