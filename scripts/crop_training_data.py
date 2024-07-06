@@ -9,7 +9,7 @@ cell_data_path = "/media/ssd2/clinical_text_data/MegakaryoctePltClumpProject/sli
 
 slide_folder = "/dmpisilon_tools/Greg/SF_Data/Pathology Images"
 
-save_dir = "/media/hdd3/neo/B1_cell_scan_training_data"
+save_dir = "/media/hdd3/neo/PL1_cell_scan_training_data"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
