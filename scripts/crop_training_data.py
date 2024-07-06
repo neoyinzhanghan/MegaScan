@@ -61,7 +61,10 @@ for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
     slide_path = find_file_recursive(slide_folder, slide_name)
 
     if slide_path is None:
-        raise FileNotFoundError(f"Slide {slide_name} not found in {slide_folder}")
+        # add the slide name to the problem slides list
+        problem_slides.append(slide_name)
+
+        continue
 
     center_x = row["center_x_slide"]
     center_y = row["center_y_slide"]
