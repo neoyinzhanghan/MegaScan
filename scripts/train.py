@@ -19,7 +19,7 @@ from torch.utils.data import WeightedRandomSampler
 ####### DEFINE HYPERPARAMETERS AND DATA DIRECTORIES ########################
 ############################################################################
 
-num_epochs = 10
+num_epochs = 25
 default_config = {"lr": 3.56e-06}  # 1.462801279401232e-06}
 data_dir = "/home/cat/Documents/neo/PL1_data_v1_split"
 num_gpus = 3
@@ -334,5 +334,18 @@ def model_create(path, num_classes=2):
 if __name__ == "__main__":
     # Run training for each downsampling factor
 
+    print("Training with downsample factor 1")
     # Train the model
-    train_model(downsample_factor=downsample_factor)
+    train_model(downsample_factor=1)
+
+    print("Training with downsample factor 2")
+    # Train the model
+    train_model(downsample_factor=2)
+
+    print("Training with downsample factor 4")
+    # Train the model
+    train_model(downsample_factor=4)
+
+    print("Training with downsample factor 8")
+    # Train the model
+    train_model(downsample_factor=8)
