@@ -7,9 +7,7 @@ from tqdm import tqdm
 
 cell_data_path = "/media/ssd2/clinical_text_data/MegakaryoctePltClumpProject/slides_with_pl_cells_renamed.csv"
 
-slide_folder = (
-    "/dmpisilon_tools/Greg/SF_Data/Volumes/Seagate5TB 1/Pathology/Pathology Images"
-)
+slide_folder = "/dmpisilon_tools/Greg/SF_Data/Pathology Images"
 
 save_dir = "/media/hdd3/neo/B1_cell_scan_training_data"
 
