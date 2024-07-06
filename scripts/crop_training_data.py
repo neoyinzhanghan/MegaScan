@@ -5,6 +5,8 @@ import random
 from pathlib import Path
 from tqdm import tqdm
 
+cellname = "PL1"
+
 cell_data_path = "/media/ssd2/clinical_text_data/MegakaryoctePltClumpProject/slides_with_pl_cells_renamed.csv"
 
 slide_folder = "/dmpisilon_tools/Greg/SF_Data/Pathology Images"
@@ -49,6 +51,10 @@ def find_file_recursive(slide_folder, slide_name):
 
 # traverse through rows in the dataframe
 for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
+
+    if row["cell_type"] != cellname:
+        continue
+
     slide_name = row["slide_name"]
 
     # recursively search for the slide in the slide_folder with the slide_name
@@ -92,7 +98,7 @@ for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
         metadata["slide_path"].append(slide_path)
         metadata["center_x"].append(center_x)
         metadata["center_y"].append(center_y)
-        metadata["cellname"].append("PL1")
+        metadata["cellname"].append(cellname)
         metadata["cell_image_size"].append(cell_image_size)
         metadata["region_TL_x"].append(region_TL_x)
         metadata["region_TL_y"].append(region_TL_y)
