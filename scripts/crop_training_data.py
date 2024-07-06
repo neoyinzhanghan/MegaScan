@@ -90,7 +90,7 @@ for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
         metadata["slide_path"].append(slide_path)
         metadata["center_x"].append(center_x)
         metadata["center_y"].append(center_y)
-        metadata["cellname"].append(row["cellname"])
+        metadata["cellname"].append("PL1")
         metadata["cell_image_size"].append(cell_image_size)
         metadata["region_TL_x"].append(region_TL_x)
         metadata["region_TL_y"].append(region_TL_y)
