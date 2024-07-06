@@ -16,7 +16,7 @@ save_dir = "/media/hdd3/neo/PL1_cell_scan_training_data"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
-num_regions_per_cell = 1
+num_regions_per_cell = 5
 region_size = 512
 
 df = pd.read_csv(cell_data_path)
