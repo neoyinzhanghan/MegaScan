@@ -21,7 +21,7 @@ from torch.utils.data import WeightedRandomSampler
 
 num_epochs = 500
 default_config = {"lr": 3.56e-06}  # 1.462801279401232e-06}
-data_dir = "/media/hdd1/neo/pooled_deepheme_data"
+data_dir = "/home/cat/Documents/neo/DeepHemeRetrain"
 num_gpus = 3
 num_workers = 20
 downsample_factor = 1
