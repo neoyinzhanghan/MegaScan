@@ -70,8 +70,11 @@ for i in tqdm(range(num_regions), desc="Sampling Regions"):
 
     region_image_path = os.path.join(image_folder, image_file)
 
+    # new image path is the idx.jpg
+    new_image_path = os.path.join(save_dir, f"{current_idx}.jpg")
+
     # copy the image to the save_dir
-    shutil.copy(region_image_path, save_dir)
+    shutil.copy(region_image_path, new_image_path)
 
     # add the information of the region image to the metadata
     metadata["idx"].append(current_idx)
