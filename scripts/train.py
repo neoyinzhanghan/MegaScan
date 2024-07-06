@@ -25,7 +25,7 @@ data_dir = "/home/cat/Documents/neo/PL1_data_v1_split"
 num_gpus = 3
 num_workers = 20
 downsample_factor = 1
-batch_size = 256
+batch_size = 128
 img_size = 512
 num_classes = 2
 
