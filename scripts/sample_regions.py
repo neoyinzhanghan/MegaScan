@@ -32,6 +32,13 @@ for subfolder in tqdm(subfolders, desc="Sanity Checking Subfolders"):
 
 print("Sanity check completed.")
 
+# now recompile the subfolders
+# Get all the subfolders that do not start with ERROR
+subfolders = [f for f in os.listdir(data_dir) if not f.startswith("ERROR")]
+
+# Make sure to check if they are actually folders, not files
+subfolders = [f for f in subfolders if os.path.isdir(os.path.join(data_dir, f))]
+
 num_regions = 3000
 
 current_idx = 0
