@@ -19,7 +19,7 @@ from torch.utils.data import WeightedRandomSampler
 ####### DEFINE HYPERPARAMETERS AND DATA DIRECTORIES ########################
 ############################################################################
 
-num_epochs = 500
+num_epochs = 10
 default_config = {"lr": 3.56e-06}  # 1.462801279401232e-06}
 data_dir = "/home/cat/Documents/neo/PL1_data_v1_split"
 num_gpus = 3
