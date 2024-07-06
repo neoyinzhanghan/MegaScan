@@ -37,6 +37,8 @@ metadata = {
 
 current_index = 0
 
+problem_slides = []
+
 
 def find_file_recursive(slide_folder, slide_name):
     slide_folder_path = Path(slide_folder)
@@ -101,13 +103,25 @@ for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
         metadata["center_y_rel"].append(center_y_rel)
 
         # crop out the region using the openslide library at level 0 based on the computed coordinates
-        slide = openslide.OpenSlide(slide_path)
+        try:
+            slide = openslide.OpenSlide(slide_path)
 
-        region = slide.read_region(
-            (region_TL_x, region_TL_y), 0, (region_size, region_size)
-        )
+            region = slide.read_region(
+                (region_TL_x, region_TL_y), 0, (region_size, region_size)
+            )
 
-        slide.close()
+            slide.close()
+
+        except Exception as e:
+
+            # in the case of keyboard interrupt, just raise the exception
+            if isinstance(e, KeyboardInterrupt):
+                raise e
+
+            print(f"Problem with slide {slide_path}")
+            problem_slides.append(slide_path)
+            print(e)
+            continue
 
         # if the image is RGBA, convert it to RGB
         if region.mode == "RGBA":
@@ -123,3 +137,8 @@ metadata_df = pd.DataFrame(metadata)
 
 # save the metadata dataframe as a csv file in the save_dir with name metadata.csv
 metadata_df.to_csv(os.path.join(save_dir, "metadata.csv"), index=False)
+
+# save the list of problem slides as a txt file in the save_dir with name problem_slides.txt
+with open(os.path.join(save_dir, "problem_slides.txt"), "w") as f:
+    for slide in problem_slides:
+        f.write(f"{slide}\n")
