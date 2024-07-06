@@ -68,8 +68,10 @@ def split_data(data_dir, save_dir, train_ratio, val_ratio, test_ratio):
 
 
 if __name__ == "__main__":
-    data_dir = "~/Documents/neo/PL1_data_v1"
-    save_dir = "~/Documents/neo/PL1_data_v1_split"
+    data_dir = "/home/cat/Documents/neo/PL1_data_v1"
+    save_dir = "/home/cat/Documents/neo/PL1_data_v1_split"
+
+    os.mkdir(save_dir, exist_ok=True)
     train_ratio = 0.7
     val_ratio = 0.2
     test_ratio = 0.1
