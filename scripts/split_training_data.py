@@ -71,7 +71,6 @@ if __name__ == "__main__":
     data_dir = "/home/cat/Documents/neo/PL1_data_v1"
     save_dir = "/home/cat/Documents/neo/PL1_data_v1_split"
 
-    os.mkdir(save_dir, exist_ok=True)
     train_ratio = 0.7
     val_ratio = 0.2
     test_ratio = 0.1
