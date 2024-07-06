@@ -16,7 +16,7 @@ subfolders = [f for f in os.listdir(data_dir) if not f.startswith("ERROR")]
 # make sure to check if they are actually folders not files
 subfolders = [f for f in subfolders if os.path.isdir(os.path.join(data_dir, f))]
 
-num_regions = 1000
+num_regions = 3000
 
 current_idx = 0
 
