@@ -2,10 +2,15 @@ import os
 import pandas as pd
 import openslide
 import random
+from pathlib import Path
 from tqdm import tqdm
 
 cell_data_path = (
     "/media/hdd3/neo/results_bma_normal_lite_v3/B1_cell_scan_training_data.csv"
+)
+
+slide_folder = (
+    "/dmpisilon_tools/Greg/SF_Data/Volumes/Seagate5TB 1/Pathology/Pathology Images"
 )
 
 save_dir = "/media/hdd3/neo/B1_cell_scan_training_data"
@@ -36,12 +41,27 @@ metadata = {
 
 current_index = 0
 
+
+def find_file_recursive(slide_folder, slide_name):
+    slide_folder_path = Path(slide_folder)
+    for file_path in slide_folder_path.rglob(slide_name):
+        return file_path
+    return None
+
+
 # traverse through rows in the dataframe
 for i, row in tqdm(df.iterrows(), desc="Processing Cell Instances"):
-    slide_path = row["slide_path"]
-    center_x = row["center_x"]
-    center_y = row["center_y"]
-    cell_image_size = row["cell_image_size"]
+    slide_name = row["slide_name"]
+
+    # recursively search for the slide in the slide_folder with the slide_name
+    slide_path = find_file_recursive(slide_folder, slide_name)
+
+    if slide_path is None:
+        raise FileNotFoundError(f"Slide {slide_name} not found in {slide_folder}")
+
+    center_x = row["center_x_slide"]
+    center_y = row["center_y_slide"]
+    cell_image_size = 256
 
     # calculate the range for the top left corner of the region
     min_TL_x = int(center_x - (region_size - cell_image_size // 2))
