@@ -9,9 +9,6 @@ save_dir = "/media/hdd3/neo/PL1_cell_scan_training_data_non_pl1"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
-else:
-    shutil.rmtree(save_dir)
-    os.makedirs(save_dir)
 
 # Get all the subfolders that do not start with ERROR
 subfolders = [f for f in os.listdir(data_dir) if not f.startswith("ERROR")]
