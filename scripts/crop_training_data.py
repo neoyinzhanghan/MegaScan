@@ -5,9 +5,7 @@ import random
 from pathlib import Path
 from tqdm import tqdm
 
-cell_data_path = (
-    "/media/hdd3/neo/results_bma_normal_lite_v3/B1_cell_scan_training_data.csv"
-)
+cell_data_path = "/media/ssd2/clinical_text_data/MegakaryoctePltClumpProject/slides_with_pl_cells_renamed.csv"
 
 slide_folder = (
     "/dmpisilon_tools/Greg/SF_Data/Volumes/Seagate5TB 1/Pathology/Pathology Images"
